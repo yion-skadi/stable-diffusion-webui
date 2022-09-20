@@ -17,6 +17,7 @@ import modules.sd_models
 sd_model_file = os.path.join(script_path, 'model.ckpt')
 default_sd_model_file = sd_model_file
 
+
 parser = argparse.ArgumentParser()
 parser.add_argument("--config", type=str, default=os.path.join(sd_path, "configs/stable-diffusion/v1-inference.yaml"), help="path to config which constructs model",)
 parser.add_argument("--ckpt", type=str, default=sd_model_file, help="path to checkpoint of stable diffusion model; this checkpoint will be added to the list of checkpoints and loaded by default if you don't have a checkpoint selected in settings",)
@@ -49,7 +50,8 @@ parser.add_argument("--gradio-auth", type=str, help='set gradio authentication l
 parser.add_argument("--opt-channelslast", action='store_true', help="change memory type for stable diffusion to channels last")
 parser.add_argument("--styles-file", type=str, help="filename to use for styles", default=os.path.join(script_path, 'styles.csv'))
 parser.add_argument("--autolaunch", action='store_true', help="open the webui URL in the system's default browser upon launch", default=False)
-cmd_opts = parser.parse_args()
+#cmd_opts = parser.parse_args()
+cmd_opts, unknown = parser.parse_known_args()
 
 if cmd_opts.opt_split_attention:
     print("Information: --opt-split-attention is now the default. To remove this message, remove --opt-split-attention from command line arguments. To disable the optimization, use --disable-opt-split-attention")

@@ -4,7 +4,7 @@ import sys
 from collections import namedtuple
 import torch
 from omegaconf import OmegaConf
-
+from sys import exit
 
 from ldm.util import instantiate_from_config
 
@@ -80,7 +80,7 @@ def select_checkpoint():
         print(f" - file {os.path.abspath(shared.cmd_opts.ckpt)}", file=sys.stderr)
         print(f" - directory {os.path.abspath(shared.cmd_opts.ckpt_dir)}", file=sys.stderr)
         print(f"Can't run without a checkpoint. Find and place a .ckpt file into any of those locations. The program will exit.", file=sys.stderr)
-        exit(1)
+        sys.exit(1)
 
     checkpoint_info = next(iter(checkpoints_list.values()))
     if model_checkpoint is not None:
